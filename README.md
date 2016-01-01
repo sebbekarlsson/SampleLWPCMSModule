@@ -8,7 +8,7 @@
 > LWPCMS modules/plugins are actually python packages, the only difference is the
 > module.json file.<br>
 > Here is a list of things your root directory needs to have:
-> * __init__.py - Python wants it.
+> * \_\_init\_\_.py - Python wants it.
 > * module.py - Containts your plugin class.
 > * module.json - Contains meta about your plugin.
 
