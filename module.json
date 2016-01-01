@@ -1,3 +1,7 @@
+"""
+module.json
+This is the meta for your module.
+"""
 {
     "module": {
         "activated": true,
