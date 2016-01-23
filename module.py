@@ -39,7 +39,7 @@ class SampleModule(LWPCMSModule):
 
     def post_publish(self, data):
         # Here I am modifying the title of a post that is about to be published.
-        data['post'].title += ' ~ SampleModule'
+        data['post']['title'] += ' ~ SampleModule'
 
 
 # At the end of your module.py file, you need to create an instance of your
