@@ -28,6 +28,7 @@ class SampleModule(LWPCMSModule):
         self.register_event(hooks['layout_head'], self.layout_head)
         self.register_event(hooks['layout_footer'], self.layout_footer)
         self.register_event(hooks['post_publish'], self.post_publish)
+        self.register_event(hooks['admin_sidenav'], self.admin_sidenav)
 
     def layout_head(self, data):
         # Here I am appending some data to the <head> element of the document.
@@ -40,6 +41,16 @@ class SampleModule(LWPCMSModule):
     def post_publish(self, data):
         # Here I am modifying the title of a post that is about to be published.
         data['post']['title'] += ' ~ SampleModule'
+
+    def admin_sidenav(self, data):
+        # Here I am adding a new button to the admin sidenav.
+        data['nav']['buttons'].append(
+                    {
+                        "label": "SampleModule",
+                        "svg": "drive_file.svg",
+                        "href": "http://www.example.org/"
+                    }
+                )
 
 
 # At the end of your module.py file, you need to create an instance of your
