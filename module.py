@@ -29,18 +29,22 @@ class SampleModule(LWPCMSModule):
         self.register_event(hooks['layout_footer'], self.layout_footer)
         self.register_event(hooks['post_publish'], self.post_publish)
         self.register_event(hooks['admin_sidenav'], self.admin_sidenav)
+        self.register_event(hooks['site_request'], self.site_request)
 
     def layout_head(self, data):
         # Here I am appending some data to the <head> element of the document.
         return '<script>console.log("test");</script>'
 
+
     def layout_footer(self, data):
         # Here I am appending some data to the <footer> element of the document.
         return '<div style="display:none;">SampleModule</div>'
 
+
     def post_publish(self, data):
         # Here I am modifying the title of a post that is about to be published.
         data['post']['title'] += ' ~ SampleModule'
+
 
     def admin_sidenav(self, data):
         # Here I am adding a new button to the admin sidenav.
@@ -51,6 +55,13 @@ class SampleModule(LWPCMSModule):
                         "href": "http://www.example.org/"
                     }
                 )
+
+
+    def site_request(self, data):
+        # Here I am adding a key with an array as a value in to the global
+        # site request.
+        # This data can later be used and collected inside a template.
+        data['package']['artists'] = ['Lindsey Stirling', 'Jordan Rudess']
 
 
 # At the end of your module.py file, you need to create an instance of your
